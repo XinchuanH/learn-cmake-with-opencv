@@ -33,3 +33,8 @@ target_link_libraries(vision
     # so anyone including it must also link against OpenCV.
     PUBLIC ${OpenCV_LIBS}
 )
+
+# Modern CMake: declare the C++ standard per target, not globally.
+# PUBLIC because vision.hpp may use C++17 features in its API,
+# so any downstream that includes it must also compile as C++17 (or later).
+target_compile_features(vision PUBLIC cxx_std_17)
