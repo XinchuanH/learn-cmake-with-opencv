@@ -1,4 +1,17 @@
-add_library(vision STATIC src/vision.cpp)
+# SHARED: build vision as a dynamic library
+#   Windows -> vision.dll  (+ vision.lib import library)
+#   Linux   -> libvision.so
+#
+# Trade-off vs STATIC:
+#   - Smaller executable, can be replaced without relinking demo.
+#   - BUT the .dll/.so must be findable at *runtime*, not just at build time.
+#     On Windows, place vision.dll next to demo.exe, or have it on PATH.
+#     On Linux, set LD_LIBRARY_PATH or bake an RPATH.
+#   - Typical symptom: "compiles fine, crashes on launch" -> dynamic loader
+#     can't find the .dll/.so.
+#
+# Switch back to STATIC by replacing SHARED with STATIC below.
+add_library(vision SHARED src/vision.cpp)
 
 # Visibility recap:
 #   PUBLIC    -> I use it,  downstream uses it too
