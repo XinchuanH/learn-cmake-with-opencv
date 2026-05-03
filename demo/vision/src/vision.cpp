@@ -1,4 +1,4 @@
-#include "vision.hpp"
+#include "vision/vision.hpp"
 
 cv::Mat toGray(const cv::Mat& image) {
     cv::Mat gray;

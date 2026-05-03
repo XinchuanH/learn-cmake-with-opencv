@@ -1,6 +1,6 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
-#include "vision.hpp"
+#include "vision/vision.hpp"
 
 int main() {
     cv::Mat image = cv::imread("test.jpg");
